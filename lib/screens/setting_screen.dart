@@ -11,6 +11,11 @@ class SettingScreen extends StatefulWidget {
 }
 
 class _SettingScreenState extends State<SettingScreen> {
+  Map<String, bool> optionStates = {
+    'Option 1': false,
+    'Option 2': false,
+    'Option 3': false,
+  };
   @override
   Widget build(BuildContext context) {
     final appProvider = Provider.of<AppProvider>(context);
@@ -48,37 +53,44 @@ class _SettingScreenState extends State<SettingScreen> {
                     ],
                   ),
                   margin: const EdgeInsets.all(16.0),
-                  child: ListView.separated(
-                    itemCount: 1,
-                    separatorBuilder: (BuildContext context, int index) =>
-                        const Divider(),
-                    itemBuilder: (BuildContext context, int index) {
-                      if (index == 0) {
-                        return ListTile(
-                          title: Text('Mode'),
-                          trailing: Switch(
-                            value: appProvider.isDarkMode,
-                            onChanged: (value) {
-                              appProvider.isDarkMode = value;
-                            },
-                          ),
-                        );
-                      } else {
-                        return ListTile(
-                          title: Text('Option $index'),
-                        );
-                      }
-                    },
+                  child: ListView(
+                    children: [
+                      ListTile(
+                        title: Text('Mode'),
+                        trailing: Switch(
+                          value: appProvider.isDarkMode,
+                          onChanged: (value) {
+                            appProvider.isDarkMode = value;
+                          },
+                        ),
+                      ),
+                      Divider(),
+                      ListTile(
+                        title: Text('Option 1'),
+                        leading: Icon(Icons.settings),
+                      ),
+                      Divider(),
+                      ListTile(
+                        title: Text('Option 2'),
+                        leading: Icon(Icons.person),
+                      ),
+                      Divider(),
+                      ListTile(
+                        title: Text('Option 3'),
+                        leading: Icon(Icons.security),
+                      ),
+                      Divider(),
+                      Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: ElevatedButton(
+                          onPressed: () {
+                            exit(0);
+                          },
+                          child: Text('Quitter'),
+                        ),
+                      ),
+                    ],
                   ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: ElevatedButton(
-                  onPressed: () {
-                    exit(0);
-                  },
-                  child: Text('Quitter'),
                 ),
               ),
             ],

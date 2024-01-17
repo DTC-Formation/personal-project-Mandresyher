@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 
 class BarreDeRecherche extends StatefulWidget {
-  const BarreDeRecherche({super.key});
+  const BarreDeRecherche({Key? key}) : super(key: key);
 
   @override
   State<BarreDeRecherche> createState() => _BarreDeRechercheState();
 }
 
 class _BarreDeRechercheState extends State<BarreDeRecherche> {
+  TextEditingController _searchController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -25,6 +27,7 @@ class _BarreDeRechercheState extends State<BarreDeRecherche> {
         ],
       ),
       child: TextField(
+        controller: _searchController,
         style: TextStyle(fontSize: 16.0),
         decoration: InputDecoration(
           contentPadding: EdgeInsets.symmetric(vertical: 15.0),
@@ -38,7 +41,11 @@ class _BarreDeRechercheState extends State<BarreDeRecherche> {
           ),
           suffixIcon: IconButton(
             icon: Icon(Icons.clear),
-            onPressed: () {},
+            onPressed: () {
+              setState(() {
+                _searchController.clear();
+              });
+            },
             color: Colors.grey,
           ),
         ),

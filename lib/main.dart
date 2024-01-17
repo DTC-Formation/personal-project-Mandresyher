@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lastprojects/home_page.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lastprojects/option/option_avanc%C3%A9/api.dart';
 import 'package:provider/provider.dart';
 
 import 'option/provider.dart';
@@ -55,6 +56,9 @@ class _BeforeHomeState extends State<BeforeHome> {
         child: FloatingActionButton(
           backgroundColor: Colors.white,
           onPressed: () {
+            setState(() {
+              JokeApi.getProgrammingJokes();
+            });
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => HomePage()),

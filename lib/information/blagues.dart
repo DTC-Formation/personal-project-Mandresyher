@@ -1,6 +1,9 @@
 import 'package:lastprojects/information/catégorie.dart';
 
+import '../option/option_avancé/data_base.dart';
+
 class Blague {
+  int? id;
   String name;
   String contenues;
   String categories;
@@ -8,12 +11,32 @@ class Blague {
   List<String> comments;
 
   Blague({
+    this.id,
     required this.name,
     required this.contenues,
     required this.categories,
     this.isFavorite = false,
     this.comments = const [],
   });
+
+  Future<void> saveToDatabase() async {
+    int id = await DatabaseHelper.instance.insertJoke(toMap());
+    print('Blague enregistrée avec l\'ID: $id');
+  }
+
+  bool containsSearchTerm(String searchTerm) {
+    return name.toLowerCase().contains(searchTerm.toLowerCase()) ||
+        contenues.toLowerCase().contains(searchTerm.toLowerCase());
+  }
+
+  Map<String, dynamic> toMap() {
+    return {
+      'name': name,
+      'contenues': contenues,
+      'categories': categories,
+      'isFavorite': isFavorite ? 1 : 0,
+    };
+  }
 
   // static where(bool Function(dynamic blague) param0) {}
   // void Like() {
@@ -55,7 +78,7 @@ final List<Blague> blagues = [
     categories: categories[0],
   ),
   Blague(
-    name: "C'est l'histoire de 1 putes qui se disputent.",
+    name: "C'est l'histoire de 2 putes qui se disputent.",
     contenues: "",
     categories: categories[0],
   ),
@@ -162,7 +185,7 @@ final List<Blague> blagues = [
     categories: categories[1],
   ),
   Blague(
-    name: "C'est un qui recontre un crocodile",
+    name: "C'est un chien qui recontre un crocodile",
     contenues:
         "Le crocodile dit au chien:\n -Salut, sac à puces!\n Et le chien lui répond:\n -Salut, sac à main",
     categories: categories[1],
@@ -232,7 +255,7 @@ final List<Blague> blagues = [
   ),
   Blague(
     name:
-        "Je pense que la femme qui a inventé la phrase 'les hommes sont tous les même était:'",
+        "Je pense que la femme qui a inventé la phrase 'les hommes sont tous les même était:",
     contenues: "Une chinoise qui a perdu son mari dans la foule.",
     categories: categories[1],
   ),
@@ -346,104 +369,9 @@ final List<Blague> blagues = [
     contenues: " Être chauve",
     categories: categories[2],
   ),
-  Blague(
-    name: "",
-    contenues: "",
-    categories: categories[3],
-  ),
-  Blague(
-    name: "",
-    contenues: "",
-    categories: categories[3],
-  ),
-  Blague(
-    name: "",
-    contenues: "",
-    categories: categories[3],
-  ),
-  Blague(
-    name: "",
-    contenues: "",
-    categories: categories[3],
-  ),
-  Blague(
-    name: "",
-    contenues: "",
-    categories: categories[3],
-  ),
-  Blague(
-    name: "",
-    contenues: "",
-    categories: categories[3],
-  ),
-  Blague(
-    name: "",
-    contenues: "",
-    categories: categories[3],
-  ),
-  Blague(
-    name: "",
-    contenues: "",
-    categories: categories[3],
-  ),
-  Blague(
-    name: "",
-    contenues: "",
-    categories: categories[3],
-  ),
-  Blague(
-    name: "",
-    contenues: "",
-    categories: categories[3],
-  ),
-  Blague(
-    name: "",
-    contenues: "",
-    categories: categories[3],
-  ),
-  Blague(
-    name: "",
-    contenues: "",
-    categories: categories[3],
-  ),
-  Blague(
-    name: "",
-    contenues: "",
-    categories: categories[3],
-  ),
-  Blague(
-    name: "",
-    contenues: "",
-    categories: categories[3],
-  ),
-  Blague(
-    name: "",
-    contenues: "",
-    categories: categories[3],
-  ),
-  Blague(
-    name: "",
-    contenues: "",
-    categories: categories[3],
-  ),
-  Blague(
-    name: "",
-    contenues: "",
-    categories: categories[3],
-  ),
-  Blague(
-    name: "",
-    contenues: "",
-    categories: categories[3],
-  ),
-  Blague(
-    name: "",
-    contenues: "",
-    categories: categories[3],
-  ),
-  Blague(
-    name: "",
-    contenues: "",
-    categories: categories[3],
-  ),
+//   Blague(
+//   name: myJoke.setup ?? '',
+//   contenues: myJoke.delivery ?? '',
+//   categories: categories[3],
+// )
 ];

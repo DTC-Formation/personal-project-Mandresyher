@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:lastprojects/option/design_barrederecherche.dart';
+import 'package:lastprojects/option/design/design_barrederecherche.dart';
 import 'package:lastprojects/option/drawer.dart';
-import 'package:lastprojects/option/categories_box.dart';
+import 'package:lastprojects/option/design/categories_box.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
