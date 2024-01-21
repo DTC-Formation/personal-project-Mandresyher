@@ -3,4 +3,5 @@ const categories = [
   "Adolescent",
   "Enfant",
   "Spécial",
+  // "Ajout",
 ];

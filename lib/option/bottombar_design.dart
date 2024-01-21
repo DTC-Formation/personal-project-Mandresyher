@@ -22,7 +22,7 @@ class _BottomNBarState extends State<BottomNBar> {
       backgroundColor: Colors.black,
       body: pages[mycurrentIndex],
       bottomNavigationBar: CurvedNavigationBar(
-        backgroundColor: Color.fromARGB(255, 140, 120, 60),
+        backgroundColor: Colors.grey.shade400,
         animationDuration: Duration(
           milliseconds: 300,
         ),
@@ -32,10 +32,12 @@ class _BottomNBarState extends State<BottomNBar> {
           });
         },
         items: const [
+          //Home
           Icon(
             Icons.home,
             color: Colors.black,
           ),
+          //Setting
           Icon(
             Icons.settings,
             color: Colors.black,

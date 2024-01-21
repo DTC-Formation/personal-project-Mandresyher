@@ -41,16 +41,14 @@ class JokeApi {
       final List<dynamic> data = json.decode(response.body)['jokes'];
       print(data);
 
-      // Liste return
       List<Blague> apiBlagues = data.map((joke) {
         return Blague(
           name: joke['setup'] ?? '1',
           contenues: joke['delivery'] ?? '1',
-          categories: categories[3], // Remplacez par la catégorie appropriée
+          categories: categories[3],
         );
       }).toList();
 
-      // Ajoutez les blagues de la catégorie 3 à la liste existante
       blagues.addAll(apiBlagues);
 
       return apiBlagues;

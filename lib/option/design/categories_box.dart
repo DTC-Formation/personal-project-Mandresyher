@@ -48,6 +48,7 @@ class _CategoriesBoxState extends State<CategoriesBox> {
           );
         }
       },
+      //Design des box de l'acceuil
       child: Container(
         margin: const EdgeInsets.all(15.0),
         padding: const EdgeInsets.all(20.0),
@@ -73,15 +74,20 @@ class _CategoriesBoxState extends State<CategoriesBox> {
             fit: BoxFit.cover,
           ),
         ),
-        child: Center(
-          child: Text(
-            widget.categoryName,
-            style: TextStyle(
-                fontSize: 18.0,
-                fontWeight: FontWeight.bold,
-                color: Colors.black87),
-          ),
-        ),
+        // child: Visibility(
+        //   visible: !isAdulteSelected,
+        //   child: Align(
+        //     alignment: Alignment.bottomCenter,
+        //     child: Text(
+        //       widget.categoryName,
+        //       style: TextStyle(
+        //         fontSize: 18.0,
+        //         fontWeight: FontWeight.bold,
+        //         color: Colors.black87,
+        //       ),
+        //     ),
+        //   ),
+        // ),
       ),
     );
   }

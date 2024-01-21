@@ -20,8 +20,24 @@ class _AgeSliderState extends State<AgeSlider> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey.shade400,
       appBar: AppBar(
+        backgroundColor: Colors.grey.shade400,
         title: Text('Sélection d\'âge'),
+        centerTitle: true,
+        leading: IconButton(
+          style: IconButton.styleFrom(
+            fixedSize: const Size(50.0, 50.0),
+            backgroundColor: Colors.white,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+          ),
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
       ),
       body: Center(
         child: Column(
