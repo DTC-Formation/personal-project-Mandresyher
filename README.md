@@ -20,7 +20,7 @@ Rigolant Ensemble est une plateforme de partage de blagues qui permet aux utilis
 
 4, Ajouter une Blague:
 
-   - Les utilisateurs peuvent ajouter leurs propres blagues dans la catégorie "Ajout".
+   - Les utilisateurs peuvent ajouter leurs propres blagues en cliquant sur le bouton 'Add' et en remplissant ce qu'ils doivent remplir
    - Les blagues ajoutées sont visibles pour tous les utilisateurs.
 
 5. Affichage des Favoris
