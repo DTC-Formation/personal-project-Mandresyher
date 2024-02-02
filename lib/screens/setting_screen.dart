@@ -20,14 +20,13 @@ class _SettingScreenState extends State<SettingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: Colors.grey.shade400,
-        // decoration: const BoxDecoration(
-        //   image: DecorationImage(
-        //     image: NetworkImage(
-        //         "https://i.pinimg.com/736x/88/36/e6/8836e61e8b4a2c12430c88ed79f3f208.jpg"),
-        //     fit: BoxFit.cover,
-        //   ),
-        // ),
+        // color: Colors.deepPurple.shade400,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/icon/6.png'),
+            fit: BoxFit.cover,
+          ),
+        ),
         child: Column(
           children: [
             Padding(

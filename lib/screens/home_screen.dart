@@ -27,7 +27,13 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: Colors.grey.shade400,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/icon/6.png'),
+            fit: BoxFit.cover,
+          ),
+        ),
+        // color: Colors.deepPurple.shade400,
         child: Column(children: [
           Padding(
             padding: const EdgeInsets.all(35.0),

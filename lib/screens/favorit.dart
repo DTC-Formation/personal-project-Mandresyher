@@ -15,9 +15,9 @@ class _MyFavoritePageState extends State<MyFavoritePage> {
     final favoriteBlagues = favoriteProvider.favoriteBlagues;
 
     return Scaffold(
-      backgroundColor: Colors.grey.shade400,
+      // backgroundColor: Colors.deepPurple.shade400,
       appBar: AppBar(
-        backgroundColor: Colors.grey.shade400,
+        backgroundColor: Colors.white,
         title: const Text(
           'Vos Favoris',
           style: TextStyle(
@@ -34,66 +34,77 @@ class _MyFavoritePageState extends State<MyFavoritePage> {
               borderRadius: BorderRadius.circular(10),
             ),
           ),
-          icon: Icon(Icons.arrow_back),
+          icon: Icon(Icons.arrow_back_ios),
           onPressed: () {
             Navigator.pop(context);
           },
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(7.5),
-        child: ListView.builder(
-          itemCount: favoriteBlagues.length,
-          itemBuilder: (context, index) {
-            final blague = favoriteBlagues[index];
-            return Container(
-              margin: const EdgeInsets.symmetric(vertical: 8.0),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10.0),
-                border: Border.all(
-                  color: Colors.white,
-                  width: 1.0,
-                ),
-              ),
-              child: ListTile(
-                title: Text(blague.name),
-                subtitle: Text(blague.contenues),
-                trailing: IconButton(
-                  onPressed: () {
-                    setState(
-                      () {
-                        context
-                            .read<FavoriteProvider>()
-                            .removeFromFavorites(blague);
-                      },
-                    );
-                  },
-                  style: IconButton.styleFrom(
-                    backgroundColor: Colors.grey.shade400,
-                    fixedSize: Size(30, 30),
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/icon/2.png'),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(7.5),
+          child: ListView.builder(
+            itemCount: favoriteBlagues.length,
+            itemBuilder: (context, index) {
+              final blague = favoriteBlagues[index];
+              return Container(
+                margin: const EdgeInsets.symmetric(vertical: 8.0),
+                decoration: BoxDecoration(
+                  color:
+                      blague.isFavorite ? Colors.white : Colors.grey.shade400,
+                  borderRadius: BorderRadius.circular(10.0),
+                  border: Border.all(
+                    color: Colors.white,
+                    width: 1.0,
                   ),
-                  iconSize: 20,
-                  icon: context.watch<FavoriteProvider>().isBlagueLiked(blague)
-                      ? Icon(Iconsax.heart5, color: Colors.red)
-                      : Icon(
-                          Iconsax.heart,
-                        ),
                 ),
-                // IconButton(
-                //   icon: Icon(
-                //     favoriteProvider.isBlagueLiked(blague)
-                //         ? Icons.favorite
-                //         : Icons.favorite_border,
-                //     color: Colors.red,
-                //   ),
-                //   onPressed: () {
-                //     favoriteProvider.toggleIsLiked(blague);
+                child: ListTile(
+                  title: Text(blague.name),
+                  subtitle: Text(blague.contenues),
+                  trailing: IconButton(
+                    onPressed: () {
+                      setState(
+                        () {
+                          context
+                              .read<FavoriteProvider>()
+                              .removeFromFavorites(blague);
+                        },
+                      );
+                    },
+                    style: IconButton.styleFrom(
+                      backgroundColor: Colors.white,
+                      fixedSize: Size(30, 30),
+                    ),
+                    iconSize: 20,
+                    icon:
+                        context.watch<FavoriteProvider>().isBlagueLiked(blague)
+                            ? Icon(Iconsax.heart5, color: Colors.red)
+                            : Icon(
+                                Iconsax.heart,
+                              ),
+                  ),
+                  // IconButton(
+                  //   icon: Icon(
+                  //     favoriteProvider.isBlagueLiked(blague)
+                  //         ? Icons.favorite
+                  //         : Icons.favorite_border,
+                  //     color: Colors.red,
+                  //   ),
+                  //   onPressed: () {
+                  //     favoriteProvider.toggleIsLiked(blague);
 
-                //   },
-                // ),
-              ),
-            );
-          },
+                  //   },
+                  // ),
+                ),
+              );
+            },
+          ),
         ),
       ),
     );

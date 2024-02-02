@@ -46,10 +46,16 @@ class _MyCommesPageState extends State<MyCommesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade400,
+      // backgroundColor: Colors.deepPurple.shade400,
       appBar: AppBar(
-        backgroundColor: Colors.grey.shade400,
-        title: Text('Commentaires'),
+        backgroundColor: Colors.white,
+        title: Text(
+          'Commentaires',
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 20.0,
+          ),
+        ),
         centerTitle: true,
         leading: IconButton(
           style: IconButton.styleFrom(
@@ -59,31 +65,37 @@ class _MyCommesPageState extends State<MyCommesPage> {
               borderRadius: BorderRadius.circular(10),
             ),
           ),
-          icon: Icon(Icons.arrow_back),
+          icon: Icon(Icons.arrow_back_ios),
           onPressed: () {
             Navigator.pop(context);
           },
         ),
       ),
-      body: FutureBuilder<List<Map<String, dynamic>>>(
-        future: DatabaseHelper.instance.getComments(),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return CircularProgressIndicator();
-          } else if (snapshot.hasError) {
-            return Text('Erreur: ${snapshot.error}');
-          } else {
-            comments = snapshot.data!
-                .map((commentMap) => Comment.fromMap(commentMap))
-                .toList();
-            return ListView.builder(
-              itemCount: comments.length,
-              itemBuilder: (context, index) {
-                return _buildCommentBox(comments[index], index);
-              },
-            );
-          }
-        },
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage('assets/icon/3.png'), fit: BoxFit.cover),
+        ),
+        child: FutureBuilder<List<Map<String, dynamic>>>(
+          future: DatabaseHelper.instance.getComments(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return CircularProgressIndicator();
+            } else if (snapshot.hasError) {
+              return Text('Erreur: ${snapshot.error}');
+            } else {
+              comments = snapshot.data!
+                  .map((commentMap) => Comment.fromMap(commentMap))
+                  .toList();
+              return ListView.builder(
+                itemCount: comments.length,
+                itemBuilder: (context, index) {
+                  return _buildCommentBox(comments[index], index);
+                },
+              );
+            }
+          },
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {

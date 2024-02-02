@@ -19,10 +19,12 @@ class _BottomNBarState extends State<BottomNBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.white,
       body: pages[mycurrentIndex],
       bottomNavigationBar: CurvedNavigationBar(
-        backgroundColor: Colors.grey.shade400,
+        backgroundColor: Colors.white,
+        buttonBackgroundColor: Colors.blueGrey,
+        color: Colors.blueGrey,
         animationDuration: Duration(
           milliseconds: 300,
         ),
